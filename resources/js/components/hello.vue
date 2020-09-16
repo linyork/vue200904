@@ -1,10 +1,10 @@
 <template>
     <div>
-        <button type="button" v-on:click="addhello" >Click Me!</button>
+        <button type="button" v-on:click="addInput" >Click Me!</button>
         <h1>Hello</h1>
         <p class="hello">Hi {{ name || '匿名' }}</p>
         <p>{{ msg }}</p>
-        <div v-for="field in fields"  v-bind:is="form-input" :key="field.id"></div>
+        <div v-for="input in inputs" class="form-input"></div>
     </div>
 </template>
 
@@ -15,17 +15,18 @@ export default {
     data () {
         return {
             msg: 'This is a Laravel with Vue Demo.',
-            fields: [],
-            count: 0
+            inputs: [],
+            nextInputId: 0
         }
     },
     methods: {
-        addhello: function () {
-            this.fields.push({
-                id: this.count++
-            });
+        addInput: function () {
+            this.inputs.push({
+                id: this.nextTodoId++,
+            })
+            console.log(this.inputs);
         }
-    }
+    },
 }
 </script>
 

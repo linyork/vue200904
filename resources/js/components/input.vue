@@ -1,5 +1,5 @@
 <template>
-    <script type="x-template" id="form-input">
+    <script type="x-template">
         <div>
             <label>Text</label>
             <input type="text"/>
