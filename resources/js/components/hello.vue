@@ -1,30 +1,35 @@
 <template>
     <div>
-        <button type="button" v-on:click="addInput" >Click Me!</button>
+        <button type="button" v-on:click="addInput">Click Me!</button>
         <h1>Hello</h1>
         <p class="hello">Hi {{ name || '匿名' }}</p>
         <p>{{ msg }}</p>
-        <div v-for="input in inputs" class="form-input"></div>
+        <div class="form-input">
+        </div>
     </div>
 </template>
 
 <script>
 
 export default {
-    props: ['name'],
+    props: ['name', 'comp'],
     data () {
         return {
             msg: 'This is a Laravel with Vue Demo.',
             inputs: [],
-            nextInputId: 0
+            nextInputId: 0,
         }
     },
+    components: {},
     methods: {
         addInput: function () {
-            this.inputs.push({
-                id: this.nextTodoId++,
-            })
-            console.log(this.inputs);
+            console.log(this);
+            const parts = Vue.extend(Vue.component(this.comp));
+            const toMount = document.createElement('DIV');
+            this.$el.querySelector('.form-input').appendChild(toMount);
+            const p = new parts()
+            p.$mount(toMount);
+            console.log(p);
         }
     },
 }

@@ -15,7 +15,7 @@
 <!-- 準備給 Vue 的掛載點 -->
 <div id="app">
     <!-- 使用我們建立的元件，一個有傳入名字，一個沒有 -->
-    <Hello name="Tony"></Hello>
+    <hello name="Tony" comp="myinput"></hello>
 </div>
 
 <!-- 載入打包後的 js 檔 -->
